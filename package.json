@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/inaerosa/CaseTecnico-4all/issues"
   },
-  "homepage": "https://github.com/inaerosa/CaseTecnico-4all#readme"
+  "homepage": "https://github.com/inaerosa/CaseTecnico-4all#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
