@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
     let products = data.products;
     let category = data.categories;
     let establishments = data.establishments;
-
+    let array = []
         for (var i = 0; i < products.length; i ++){
             let catP = products[i].categoriesId;
             for (var j = 0; j < category.length; j++){
@@ -15,22 +15,21 @@ app.get('/', (req, res) => {
                         let prodId = establishments[l].productsId;
                         for (var m = 0; m < prodId.length; m++){
                             if (category[j].id == catP[k] && products[i].id == prodId[m]){
-                                console.log("Establishment: " + establishments[l].name)
-                                console.log("Product: " + products[i].name);
-                                console.log("Category: " + category[j].name)
+                                var newJ = {
+                                    name_e: establishments[l].name,
+                                    category: category[j].name,
+                                    product: products[i].name,
+                                    price: products[i].price/100,
+                                }
+                                array.push(newJ)
                             }
                         }           
                     }    
                 }   
-
             }
-        console.log("\n")
-
+       
         }
-        
-        
-
-        
+        res.json(array)
 })
 
 app.listen(3000, () => {
