@@ -34,11 +34,7 @@ app.get('/', (req, res) => {
                         if (category.id == catP[i] && product.id== prodId[j]){
                             obj[establishment.name][category.name] = {}
                             totPrice += parseFloat(product.price/100)
-
                             obj[establishment.name][category.name][product.name] = {price: product.price/100}
-
-                            JSONWrite('./output.json', obj).then(console.log).catch(console.error)
-
                             cont++;
                         }
                     }
