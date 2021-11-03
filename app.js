@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
     let array = []
     var soma =0 ;
     var cont = 0;
-    
     for (var l = 0; l < establishments.length; l++){
         myEst[establishments[l].name] = {}
         let prodId = establishments[l].productsId;
@@ -31,8 +30,9 @@ app.get('/', (req, res) => {
                 for (var k = 0; k < catP.length; k++){
                     for (var m = 0; m < prodId.length; m++){
                         if (category[j].id == catP[k] && products[i].id== prodId[m]){
-                            myEst[establishments[l].name][products[i].name] = {price: products[i].price/100}
-                            JSONWrite('./output.json', myEst).then(console.log).catch(console.error)   
+                            myEst[establishments[l].name][category[j].name] = {}
+                            myEst[establishments[l].name] [category[j].name][products[i].name] = {price: products[i].price/100}
+                            JSONWrite('./output.json', myEst).then(console.log).catch(console.error)
                         }
                     }        
                 }   
@@ -42,8 +42,6 @@ app.get('/', (req, res) => {
     }
     res.json(myEst)
 })
-
-
 
 app.listen(3000, () => {
     console.log("Running on port 3000")
