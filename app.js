@@ -3,6 +3,7 @@ const app = express();
 const fs = require('fs')
 const data = require('./data.json')
 
+
 const JSONWrite = (filePath, data, encoding = 'utf-8') => {
     const promiseCallback = (resolve, reject) => {
         fs.writeFile(filePath, JSON.stringify(data, null, 2), encoding, (err) => {
@@ -18,7 +19,6 @@ app.get('/', (req, res) => {
     let category = data.categories;
     let establishments = data.establishments;
     var myEst = new Object();
-    let array = []
     var totPrice =0 ;
     var cont = 0;
     var avg;
@@ -41,18 +41,18 @@ app.get('/', (req, res) => {
 
                             cont++;
                         }
-
                     }
                 }
             })
         })
-        
+
         avg = totPrice/cont;
         myEst[establishment.name]["avgPrice"] = avg.toFixed(2)
         cont = 0;
         avg = 0;
         totPrice = 0;
-        array.push(myEst)
+        
+        JSONWrite('./output.json', myEst).then(console.log).catch(console.error)
     })
  
     res.json(myEst)
