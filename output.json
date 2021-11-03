@@ -21,7 +21,7 @@
     "Churrasco": {
       "price": 31.9
     },
-    "avgPrice": 15.8
+    "avgPrice": "15.80"
   },
   "Comida Asiatica": {
     "Bebidas": {
@@ -54,7 +54,7 @@
     "Rolinho Primavera": {
       "price": 15.9
     },
-    "avgPrice": 26.642857142857142
+    "avgPrice": "26.64"
   },
   "Fast Lanches": {
     "Lanche": {

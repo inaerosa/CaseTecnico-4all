@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
             }
         }
         avg[l] = totPrice/cont;
-        myEst[establishments[l].name]["avgPrice"] = avg[l]
+        myEst[establishments[l].name]["avgPrice"] = avg[l].toFixed(2)
         array.push(myEst)
     }
     res.json(myEst)
