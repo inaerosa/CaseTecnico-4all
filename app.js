@@ -22,37 +22,39 @@ app.get('/', (req, res) => {
     var totPrice =0 ;
     var cont = 0;
     var avg;
-    for (var l = 0; l < establishments.length; l++){
-        myEst[establishments[l].name] = {}
-        console.log(avg)
-        let prodId = establishments[l].productsId;
-        for (var i = 0; i < products.length; i ++){
-            let catP = products[i].categoriesId;
-            for (var j = 0; j < category.length; j++){
-                for (var k = 0; k < catP.length; k++){
-                    for (var m = 0; m < prodId.length; m++){
-                        if (category[j].id == catP[k] && products[i].id== prodId[m]){
-                            totPrice += parseFloat(products[i].price/100)
-                            myEst[establishments[l].name][category[j].name] = {}
-                            myEst[establishments[l].name][category[j].name][products[i].name] = {}
-                            myEst[establishments[l].name][products[i].name] = {price: products[i].price/100}
-                            
+
+    establishments.forEach(establishment => {
+        myEst[establishment.name] = {}
+        let prodId = establishment.productsId;
+        products.forEach(product => {
+            let catP = product.categoriesId;
+            category.forEach(category => {
+                for (var i = 0; i < catP.length; i++){
+                    for (var j = 0; j < prodId.length; j++){
+                        if (category.id == catP[i] && product.id== prodId[j]){
+                            myEst[establishment.name][category.name] = {}
+                            totPrice += parseFloat(product.price/100)
+
+                            myEst[establishment.name][category.name][product.name] = {price: product.price/100}
+
                             JSONWrite('./output.json', myEst).then(console.log).catch(console.error)
-            
+
                             cont++;
                         }
-                    }        
-                }   
-            }
-        }
 
+                    }
+                }
+            })
+        })
+        
         avg = totPrice/cont;
-        myEst[establishments[l].name]["avgPrice"] = avg.toFixed(2)
+        myEst[establishment.name]["avgPrice"] = avg.toFixed(2)
         cont = 0;
         avg = 0;
         totPrice = 0;
         array.push(myEst)
-    }
+    })
+ 
     res.json(myEst)
 })
 
