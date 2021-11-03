@@ -19,8 +19,9 @@ app.get('/', (req, res) => {
     let establishments = data.establishments;
     var myEst = new Object();
     let array = []
-    var soma =0 ;
+    var totPrice =0 ;
     var cont = 0;
+    var avg = 0;
     for (var l = 0; l < establishments.length; l++){
         myEst[establishments[l].name] = {}
         let prodId = establishments[l].productsId;
@@ -30,14 +31,17 @@ app.get('/', (req, res) => {
                 for (var k = 0; k < catP.length; k++){
                     for (var m = 0; m < prodId.length; m++){
                         if (category[j].id == catP[k] && products[i].id== prodId[m]){
+                            totPrice += parseInt(products[i].price/100)
                             myEst[establishments[l].name][category[j].name] = {}
                             myEst[establishments[l].name] [category[j].name][products[i].name] = {price: products[i].price/100}
                             JSONWrite('./output.json', myEst).then(console.log).catch(console.error)
+                            cont++;
                         }
                     }        
                 }   
             }
         }
+        avg = totPrice/cont;
         array.push(myEst)
     }
     res.json(myEst)
