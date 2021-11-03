@@ -1,58 +1,94 @@
 {
   "Restaurante": {
     "Bebidas": {
-      "Água": {
-        "price": 5
-      }
+      "Água": {}
+    },
+    "Guaraná": {
+      "price": 9
+    },
+    "Suco": {
+      "price": 6
+    },
+    "Água": {
+      "price": 5
     },
     "Refeições": {
-      "Churrasco": {
-        "price": 31.9
-      }
-    }
+      "Churrasco": {}
+    },
+    "Alaminuta": {
+      "price": 28
+    },
+    "Churrasco": {
+      "price": 31.9
+    },
+    "avgPrice": 15.8
   },
   "Comida Asiatica": {
     "Bebidas": {
-      "Água": {
-        "price": 5
-      }
+      "Água": {}
+    },
+    "Guaraná": {
+      "price": 9
+    },
+    "Água": {
+      "price": 5
     },
     "Japonesa": {
-      "Temaki": {
-        "price": 20.9
-      }
+      "Temaki": {}
+    },
+    "Sushi": {
+      "price": 70
     },
     "Oriental": {
-      "Rolinho Primavera": {
-        "price": 15.9
-      }
+      "Rolinho Primavera": {}
     },
     "Refeições": {
-      "Sushi": {
-        "price": 70
-      }
+      "Sushi": {}
+    },
+    "Temaki": {
+      "price": 20.9
     },
     "Chinesa": {
-      "Rolinho Primavera": {
-        "price": 15.9
-      }
-    }
+      "Rolinho Primavera": {}
+    },
+    "Rolinho Primavera": {
+      "price": 15.9
+    },
+    "avgPrice": 26.642857142857142
   },
   "Fast Lanches": {
     "Lanche": {
-      "Batata frita": {
-        "price": 15
-      }
+      "Batata frita": {}
+    },
+    "Xis Frango": {
+      "price": 30
+    },
+    "Xis Carne": {
+      "price": 31
+    },
+    "Xis Coração": {
+      "price": 36.5
     },
     "Bebidas": {
-      "Água": {
-        "price": 5
-      }
+      "Água": {}
+    },
+    "Guaraná": {
+      "price": 9
+    },
+    "Suco": {
+      "price": 6
+    },
+    "Água": {
+      "price": 5
+    },
+    "Hamburguer": {
+      "price": 28.5
     },
     "Fast food": {
-      "Hamburguer": {
-        "price": 28.5
-      }
+      "Hamburguer": {}
+    },
+    "Batata frita": {
+      "price": 15
     }
   }
 }
