@@ -18,13 +18,13 @@ app.get('/', (req, res) => {
     let products = data.products;
     let category = data.categories;
     let establishments = data.establishments;
-    var myEst = new Object();
+    var obj = new Object();
     var totPrice =0 ;
     var cont = 0;
     var avg;
 
     establishments.forEach(establishment => {
-        myEst[establishment.name] = {}
+        obj[establishment.name] = {}
         let prodId = establishment.productsId;
         products.forEach(product => {
             let catP = product.categoriesId;
@@ -32,12 +32,12 @@ app.get('/', (req, res) => {
                 for (var i = 0; i < catP.length; i++){
                     for (var j = 0; j < prodId.length; j++){
                         if (category.id == catP[i] && product.id== prodId[j]){
-                            myEst[establishment.name][category.name] = {}
+                            obj[establishment.name][category.name] = {}
                             totPrice += parseFloat(product.price/100)
 
-                            myEst[establishment.name][category.name][product.name] = {price: product.price/100}
+                            obj[establishment.name][category.name][product.name] = {price: product.price/100}
 
-                            JSONWrite('./output.json', myEst).then(console.log).catch(console.error)
+                            JSONWrite('./output.json', obj).then(console.log).catch(console.error)
 
                             cont++;
                         }
@@ -47,15 +47,15 @@ app.get('/', (req, res) => {
         })
 
         avg = totPrice/cont;
-        myEst[establishment.name]["avgPrice"] = avg.toFixed(2)
+        obj[establishment.name]["avgPrice"] = avg.toFixed(2)
         cont = 0;
         avg = 0;
         totPrice = 0;
         
-        JSONWrite('./output.json', myEst).then(console.log).catch(console.error)
+        JSONWrite('./output.json', obj).then(console.log).catch(console.error)
     })
  
-    res.json(myEst)
+    res.json(obj)
 })
 
 app.listen(3000, () => {
