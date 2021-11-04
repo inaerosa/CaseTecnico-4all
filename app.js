@@ -3,7 +3,6 @@ const app = express();
 const fs = require('fs')
 const data = require('./data.json')
 
-
 const JSONWrite = (filePath, data, encoding = 'utf-8') => {
     const promiseCallback = (resolve, reject) => {
         fs.writeFile(filePath, JSON.stringify(data, null, 2), encoding, (err) => {
@@ -32,9 +31,11 @@ app.get('/', (req, res) => {
                 for (var i = 0; i < catP.length; i++){
                     for (var j = 0; j < prodId.length; j++){
                         if (category.id == catP[i] && product.id== prodId[j]){
-                            obj[establishment.name][category.name] = {}
-                            totPrice += parseFloat(product.price/100)
+                            if (!obj[establishment.name][category.name]){
+                                obj[establishment.name][category.name] = {}
+                            }
                             obj[establishment.name][category.name][product.name] = {price: product.price/100}
+                            totPrice += parseFloat(product.price/100)
                             cont++;
                         }
                     }
@@ -44,6 +45,7 @@ app.get('/', (req, res) => {
 
         avg = totPrice/cont;
         obj[establishment.name]["avgPrice"] = avg.toFixed(2)
+
         cont = 0;
         avg = 0;
         totPrice = 0;
