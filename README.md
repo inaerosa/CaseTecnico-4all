@@ -1,6 +1,6 @@
 # Case Técnico 4all
  
-## 💢 About
+## 💢 Sobre
 
 **Case técnico** desenvolvido a partir de um .json
 
